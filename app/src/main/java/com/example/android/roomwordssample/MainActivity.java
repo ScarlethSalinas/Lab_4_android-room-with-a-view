@@ -88,4 +88,14 @@ public class MainActivity extends AppCompatActivity {
                     Toast.LENGTH_LONG).show();
         }
     }
+
+    private void removeWordsfromList(int p) {
+//HJOLA
+
+    }
+
+
+
+
+
 }
