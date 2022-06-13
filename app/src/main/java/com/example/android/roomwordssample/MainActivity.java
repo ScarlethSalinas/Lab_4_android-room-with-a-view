@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void removeWordsfromList(int p) {
-//HJOLA
+
 
     }
 
