@@ -20,8 +20,10 @@ import android.content.Context;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Collections;
 import java.util.List;
@@ -40,7 +42,11 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
 
     private final LayoutInflater mInflater;
     private List<Word> mWords = Collections.emptyList(); // Cached copy of words
-
+//    private void clickListener(String word) {
+//        RecyclerView.Adapter<WordListAdapter.WordViewHolder>{
+//            mWords.clear();
+//        }
+//    }
     WordListAdapter(Context context) {
         mInflater = LayoutInflater.from(context);
     }
@@ -55,7 +61,15 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
     public void onBindViewHolder(WordViewHolder holder, int position) {
         Word current = mWords.get(position);
         holder.wordItemView.setText(current.getWord());
+        holder.itemView.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                view.setOnClickListener(this);
+            }
+        });
     }
+
+
 
     void setWords(List<Word> words) {
         mWords = words;
@@ -66,6 +80,7 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
     public int getItemCount() {
         return mWords.size();
     }
+
 }
 
 

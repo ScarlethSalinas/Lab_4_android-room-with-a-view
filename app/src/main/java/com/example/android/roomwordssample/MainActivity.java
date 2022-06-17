@@ -89,21 +89,28 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void removeWordsfromList(List<Word> words, int p, int id) {
-        RecyclerView recyclerView = findViewById(R.id.recyclerview);
+    public void onDestroy() {
+        super.onDestroy();
+        final RecyclerView recyclerView = findViewById(R.id.recyclerview);
         final WordListAdapter adapter = new WordListAdapter(this);
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        //recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        mWordViewModel.delete(words.get(id));
-        adapter.setWords(words);
+        recyclerView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+                Intent data = new Intent(MainActivity.this, view.getClass());
+                Word word = new Word(adapter.getClass().getName());
 
-
+                view.setOnClickListener(this);
+                mWordViewModel.delete(word);
+                Toast.makeText(
+                        getApplicationContext(),
+                        "Word Delete Successful",
+                        Toast.LENGTH_LONG).show();
+            }
+        });
     }
-
-
-
-
 
 }

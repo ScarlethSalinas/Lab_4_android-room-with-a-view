@@ -40,6 +40,7 @@ public class Word {
     @ColumnInfo(name = "word")
     private String mWord;
 
+
     public Word(@NonNull String word) {
         this.mWord = word;
     }
@@ -48,4 +49,6 @@ public class Word {
     public String getWord() {
         return this.mWord;
     }
+
+
 }
