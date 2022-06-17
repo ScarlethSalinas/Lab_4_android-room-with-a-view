@@ -89,7 +89,15 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void removeWordsfromList(int p) {
+    private void removeWordsfromList(List<Word> words, int p, int id) {
+        RecyclerView recyclerView = findViewById(R.id.recyclerview);
+        final WordListAdapter adapter = new WordListAdapter(this);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        mWordViewModel.delete(words.get(id));
+        adapter.setWords(words);
+
 
 
     }
