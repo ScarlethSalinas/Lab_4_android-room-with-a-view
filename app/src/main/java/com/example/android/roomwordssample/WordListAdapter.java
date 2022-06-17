@@ -42,11 +42,9 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
 
     private final LayoutInflater mInflater;
     private List<Word> mWords = Collections.emptyList(); // Cached copy of words
-//    private void clickListener(String word) {
-//        RecyclerView.Adapter<WordListAdapter.WordViewHolder>{
-//            mWords.clear();
-//        }
-//    }
+    private void clickListener(String word) {
+
+    }
     WordListAdapter(Context context) {
         mInflater = LayoutInflater.from(context);
     }
