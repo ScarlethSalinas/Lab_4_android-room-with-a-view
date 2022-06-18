@@ -98,19 +98,17 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int removeIndex = 3;
                 Intent data = new Intent(MainActivity.this, view.getClass());
                 Word word = new Word(adapter.getClass().getName());
 
                 view.setOnClickListener(this);
+                Toast.makeText(view.getContext(),"Click on Word: "+word.getWord(),Toast.LENGTH_LONG).show();
                 mWordViewModel.delete(word);
                 Toast.makeText(
-                        getApplicationContext(),
-                        "Word Delete Successful",
+                        view.getContext(),
+                        "Word "+word.getWord()+" Delete Successful",
                         Toast.LENGTH_LONG).show();
-                //pruebas
-               mWordViewModel.getAllWords().getValue().get(removeIndex);
-                adapter.notifyItemRemoved(removeIndex);
+
             }
         });
 

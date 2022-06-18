@@ -18,6 +18,9 @@ package com.example.android.roomwordssample;
 
 import android.content.Context;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -55,15 +58,21 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
     }
 
     @Override
-    public void onBindViewHolder(WordViewHolder holder, int position) {
+    public void onBindViewHolder(final WordViewHolder holder, final int position) {
         final Word current = mWords.get(position);
         holder.wordItemView.setText(current.getWord());
         holder.itemView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 view.setOnClickListener(this);
-                Toast.makeText(view.getContext(),"click on item: "+current.getWord(),Toast.LENGTH_LONG).show();
-
+                Toast.makeText(view.getContext(),"Click on Word: "+current.getWord(),Toast.LENGTH_LONG).show();
+                    mWords.remove(current);
+                    notifyDataSetChanged();
+                    notifyItemRemoved(holder.getPosition());
+                    Toast.makeText(
+                            view.getContext(),
+                            "Word "+current.getWord()+" Delete Successful",
+                            Toast.LENGTH_LONG).show();
             }
         });
     }
