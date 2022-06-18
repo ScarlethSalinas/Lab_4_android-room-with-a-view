@@ -39,12 +39,11 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
             wordItemView = itemView.findViewById(R.id.textView);
         }
     }
-
     private final LayoutInflater mInflater;
     private List<Word> mWords = Collections.emptyList(); // Cached copy of words
-    private void clickListener(String word) {
-
-    }
+//    private void clickListener(String word) {
+//
+//    }
     WordListAdapter(Context context) {
         mInflater = LayoutInflater.from(context);
     }
@@ -57,17 +56,17 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
 
     @Override
     public void onBindViewHolder(WordViewHolder holder, int position) {
-        Word current = mWords.get(position);
+        final Word current = mWords.get(position);
         holder.wordItemView.setText(current.getWord());
         holder.itemView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 view.setOnClickListener(this);
+                Toast.makeText(view.getContext(),"click on item: "+current.getWord(),Toast.LENGTH_LONG).show();
+
             }
         });
     }
-
-
 
     void setWords(List<Word> words) {
         mWords = words;

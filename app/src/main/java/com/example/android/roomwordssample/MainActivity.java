@@ -94,12 +94,11 @@ public class MainActivity extends AppCompatActivity {
         final RecyclerView recyclerView = findViewById(R.id.recyclerview);
         final WordListAdapter adapter = new WordListAdapter(this);
         recyclerView.setAdapter(adapter);
-        //recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                int removeIndex = 3;
                 Intent data = new Intent(MainActivity.this, view.getClass());
                 Word word = new Word(adapter.getClass().getName());
 
@@ -109,8 +108,13 @@ public class MainActivity extends AppCompatActivity {
                         getApplicationContext(),
                         "Word Delete Successful",
                         Toast.LENGTH_LONG).show();
+                //pruebas
+               mWordViewModel.getAllWords().getValue().get(removeIndex);
+                adapter.notifyItemRemoved(removeIndex);
             }
         });
+
+
     }
 
 }
