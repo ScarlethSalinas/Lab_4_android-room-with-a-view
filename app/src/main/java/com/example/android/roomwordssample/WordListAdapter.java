@@ -68,7 +68,7 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
                 Toast.makeText(view.getContext(),"Click on Word: "+current.getWord(),Toast.LENGTH_LONG).show();
                     mWords.remove(current);
                     notifyDataSetChanged();
-                    notifyItemRemoved(holder.getPosition());
+                    //notifyItemRemoved(holder.getPosition());
                     Toast.makeText(
                             view.getContext(),
                             "Word "+current.getWord()+" Delete Successful",
