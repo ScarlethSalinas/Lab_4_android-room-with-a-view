@@ -37,15 +37,22 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
     private WordViewModel mWordViewModel;
     private final LayoutInflater mInflater;
     private List<Word> mWords = Collections.emptyList(); // Cached copy of words
-//    private void clickListener(String word) {
-//
-//    }
+
     public void setModel(WordViewModel mWordViewModel) {
         this.mWordViewModel = mWordViewModel;
     }
 
     WordListAdapter(Context context) {
         mInflater = LayoutInflater.from(context);
+    }
+
+    class WordViewHolder extends RecyclerView.ViewHolder {
+        private final TextView wordItemView;
+
+        private WordViewHolder(View itemView) {
+            super(itemView);
+            wordItemView = itemView.findViewById(R.id.textView);
+        }
     }
 
     @Override
@@ -66,8 +73,7 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
                 mWords.remove(current);
                 mWordViewModel.delete(current);
                     notifyDataSetChanged();
-                    //notifyItemRemoved(holder.getPosition());
-                    Toast.makeText(
+                Toast.makeText(
                             view.getContext(),
                             "Word "+current.getWord()+" Delete Successful",
                             Toast.LENGTH_LONG).show();
@@ -85,14 +91,7 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
         return mWords.size();
     }
 
-    class WordViewHolder extends RecyclerView.ViewHolder {
-        private final TextView wordItemView;
 
-        private WordViewHolder(View itemView) {
-            super(itemView);
-            wordItemView = itemView.findViewById(R.id.textView);
-        }
-    }
 }
 
 

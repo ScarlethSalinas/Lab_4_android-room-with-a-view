@@ -96,24 +96,6 @@ public class MainActivity extends AppCompatActivity {
         final WordListAdapter adapter = new WordListAdapter(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        /*recyclerView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent data = new Intent(MainActivity.this, view.getClass());
-                Word word = new Word(adapter.getClass().getName());
-
-                view.setOnClickListener(this);
-                Toast.makeText(view.getContext(),"Click on Word: "+word.getWord(),Toast.LENGTH_LONG).show();
-                mWordViewModel.delete(word);
-                Toast.makeText(
-                        view.getContext(),
-                        "Word "+word.getWord()+" Delete Successful",
-                        Toast.LENGTH_LONG).show();
-
-            }
-        });*/
-
-
     }
 
 }
