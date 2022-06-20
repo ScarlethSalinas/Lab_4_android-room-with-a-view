@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Get a new or existing ViewModel from the ViewModelProvider.
         mWordViewModel = ViewModelProviders.of(this).get(WordViewModel.class);
+        adapter.setModel(mWordViewModel);
 
         // Add an observer on the LiveData returned by getAlphabetizedWords.
         // The onChanged() method fires when the observed data changes and the activity is
@@ -95,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
         final WordListAdapter adapter = new WordListAdapter(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setOnClickListener(new View.OnClickListener() {
+        /*recyclerView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent data = new Intent(MainActivity.this, view.getClass());
@@ -110,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
                         Toast.LENGTH_LONG).show();
 
             }
-        });
+        });*/
 
 
     }
